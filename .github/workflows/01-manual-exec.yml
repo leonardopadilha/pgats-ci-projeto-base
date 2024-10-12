@@ -42,7 +42,9 @@ jobs:
       - name: Testes E2E (end-to-end)
         run: yarn run test
 
+        # passed, failed, cancelled
       - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
           name: relatorio-de-testes
           path: ./playwright-report
