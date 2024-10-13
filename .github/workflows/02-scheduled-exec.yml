@@ -1,27 +1,28 @@
-# CI de Nível 01 - Disparo manual a partir de 1 clique
+# CI de Nível 02 - Disparo automático em períodos definidos
 
 # nome que vai aparecer nas opções de pipe
-name: 'Execução Manual'
+name: 'Execução Agendada'
 
-# regras de disparo da execução (triggers/gatilhos)
-  # gatilho de exec manual = workflow_dispatch
+# regras oe disparo de execução (triggers/gatilhos)
+  # gatilho de exec agendada = schedule
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * 1' # lembrar do timezone na hora de configurar essa execução (3 horas de diferença)
 
+# cron POSIX
+# a -> minuto
+# b -> hora
+# c -> dias do mês
+# d -> meses do ano
+# e -> dias da semana
+
+# rodar toda segunda-feira, às 08h da manhã
+
+# a b c d e
+# 0 8 * * 1
 
 jobs:
-
-  # um exemplo de como é a a etrutura ou a lógica da criação do job
-  # build:
-  #  steps:
-  #    - baixar as dependências
-  #    - subir a aplicação
-  #    - gerar a versão
-  # tests:
-  #  steps:
-  #    - instalar as dependências
-  #    - executar o comando para rodar os testes
 
   # descrição do job
   e2e-tests:
